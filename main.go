@@ -23,6 +23,7 @@ func main() {
 	routes.RouteResetPassword(mainRouter)
 	routes.RouteValidation(mainRouter)
 
+	fmt.Printf("server started at port 8080")
 	log.Fatal(http.ListenAndServe(":8080", mainRouter))
-	fmt.Printf("\nserver started at port 8080")
+
 }

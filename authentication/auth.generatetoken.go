@@ -24,7 +24,7 @@ func GenerateJwtToken(email string) string {
 	tokenString, err := token.SignedString(jwtKey)
 
 	if err != nil {
-		panic(err)
+		panic("problem in generating token")
 	}
 	return tokenString
 }

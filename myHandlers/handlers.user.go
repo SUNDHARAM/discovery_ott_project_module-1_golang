@@ -40,18 +40,18 @@ func AddUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-Type", "application/json")
 	db := database.GetUserDB()
 	var user models.User
-	var users []models.User
-	var count int = 0
+	// var users []models.User
+	// var count int = 0
 	err := json.NewDecoder(r.Body).Decode(&user)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode("Invalid credentials")
 	}
-	db.Find(&users)
-	for range users {
-		count++
-	}
-	user.UserId = count + 1
+	// db.Find(&users)
+	// for range users {
+	// 	count++
+	// }
+	// user.UserId = count + 1
 	if middlewares.IsEmail(user.Email) {
 		if middlewares.IsPassword(user.Password) {
 			err := db.Create(&user).Error
