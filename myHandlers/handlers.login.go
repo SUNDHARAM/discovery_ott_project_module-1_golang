@@ -9,6 +9,8 @@ import (
 	"net/http"
 )
 
+// var newUrl string = "/user/getallusers"
+
 func Login(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-Type", "application/json")
 	var credentials models.Credentials
@@ -33,6 +35,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 				fmt.Println(index)
 				fmt.Println(tokenString)
 				json.NewEncoder(w).Encode(&tokenString)
+				json.NewEncoder(w).Encode("user Redirected to url : http://localhost:8080/user/getallusers")
+				// http.Redirect(w, r, newUrl, http.StatusSeeOther)
 			}
 		}
 	}
